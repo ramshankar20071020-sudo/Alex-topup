@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Fire Store — ALEX TOPUP</title><link rel="stylesheet" href="style.css"></head>
+<body><header class="topbar"><div class="brand">ALEX <span>TOPUP</span></div><nav><a href="index.html">Home</a><a class="active" href="store.html">Free Fire Store</a><a href="orders.html">My Orders</a><a href="login.html">Login</a></nav></header>
+<main class="container"><h1>🎮 Free Fire Store</h1><p class="muted">Only Free Fire services are available here.</p>
+<div class="tabs"><button onclick="show('diamonds')">💎 Diamonds</button><button onclick="show('membership')">👑 Membership</button><button onclick="show('level')">🟢 Level Up Pass</button></div>
+<div id="products" class="grid"></div></main><footer>ALEX TOPUP</footer>
+<script>
+const products=[
+["diamonds","25 💎","Rs. 35"],["diamonds","50 💎","Rs. 65"],["diamonds","115 💎","Rs. 110"],["diamonds","240 💎","Rs. 220"],["diamonds","355 💎","Rs. 330"],["diamonds","480 💎","Rs. 440"],["diamonds","610 💎","Rs. 550"],["diamonds","725 💎","Rs. 655"],["diamonds","850 💎","Rs. 725"],["diamonds","965 💎","Rs. 885"],["diamonds","1090 💎","Rs. 990"],["diamonds","1240 💎","Rs. 1,065"],
+["membership","Weekly Membership","Rs. 210"],["membership","Monthly Membership","Rs. 1,050"],["membership","Weekly + Monthly Combo","Rs. 1,260"],
+["level","Level 6","Rs. 80"],["level","Level 10","Rs. 120"],["level","Level 15","Rs. 120"],["level","Level 20","Rs. 120"],["level","Level 25","Rs. 120"],["level","Level 30","Rs. 180"],["level","Full Level Up (Around)","Rs. 630"]
+];
+function show(cat){document.getElementById('products').innerHTML=products.filter(p=>p[0]===cat).map(p=>`<article class="card"><div class="icon">${p[0]==='diamonds'?'💎':p[0]==='membership'?'👑':'🟢'}</div><h3>${p[1]}</h3><strong>${p[2]}</strong><button class="btn small" onclick="buy('${p[1]}','${p[2]}')">Buy Now</button></article>`).join('')}
+function buy(name,price){localStorage.setItem('alex_product',JSON.stringify({name,price}));location.href='checkout.html'}
+show('diamonds');
+</script></body></html>

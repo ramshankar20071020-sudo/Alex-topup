@@ -1,0 +1,5 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Orders — ALEX TOPUP</title><link rel="stylesheet" href="style.css"></head>
+<body><header class="topbar"><div class="brand">ALEX <span>TOPUP</span></div><nav><a href="index.html">Home</a><a href="store.html">Store</a></nav></header>
+<main class="container"><h1>My Orders</h1><div id="orders"></div></main><script>
+const a=JSON.parse(localStorage.getItem('alex_orders')||'[]');document.getElementById('orders').innerHTML=a.length?a.map(o=>`<div class="order"><b>${o.id}</b><h3>${o.product.name}</h3><p>Player ID: ${o.playerId}</p><p>Payment: ${o.payment}</p><span>${o.status}</span></div>`).join(''):'<p class="muted">No orders yet.</p>';
+</script></body></html>

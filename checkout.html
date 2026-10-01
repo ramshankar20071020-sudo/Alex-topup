@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Checkout — ALEX TOPUP</title><link rel="stylesheet" href="style.css"></head>
+<body><header class="topbar"><div class="brand">ALEX <span>TOPUP</span></div><nav><a href="store.html">Store</a><a href="orders.html">My Orders</a></nav></header>
+<main class="container checkout"><h1>Checkout</h1><div id="selected" class="summary"></div>
+<form id="orderForm"><label>Free Fire Player ID<input id="playerId" required placeholder="Enter Player ID"></label>
+<label>Player Name (optional)<input id="playerName" placeholder="Enter Player Name"></label>
+<label>Payment Method<select id="payment"><option>eSewa</option><option>Khalti</option><option>Bank Transfer</option><option>Cash / Other</option></select></label>
+<div class="paymentbox">
+<b>Payment QR</b>
+<p>Pay using any of the QR codes below, then upload your payment screenshot.</p>
+<div class="qr-grid">
+  <div class="qr-card"><img src="assets/payment-qr-1.jpg" alt="Payment QR 1"><span>Payment QR 1</span></div>
+  <div class="qr-card"><img src="assets/payment-qr-2.jpg" alt="Payment QR 2"><span>Ramshankar Kumar Mandal — 9713132379</span></div>
+  <div class="qr-card"><img src="assets/payment-qr-3.jpg" alt="Payment QR 3"><span>Payment QR 3</span></div>
+</div>
+</div>
+<label>Payment Screenshot<input id="screenshot" type="file" accept="image/*"></label>
+<button class="btn" type="submit">Place Order</button></form></main>
+<script>
+const p=JSON.parse(localStorage.getItem('alex_product')||'null');
+if(!p){location.href='store.html'} else document.getElementById('selected').innerHTML=`<h2>${p.name}</h2><p>${p.price}</p>`;
+document.getElementById('orderForm').onsubmit=e=>{e.preventDefault();const order={id:'ALEX-'+Date.now(),product:p,playerId:playerId.value,playerName:playerName.value,payment:payment.value,status:'Pending'};const a=JSON.parse(localStorage.getItem('alex_orders')||'[]');a.unshift(order);localStorage.setItem('alex_orders',JSON.stringify(a));alert('Order placed!');location.href='orders.html'}
+</script></body></html>
